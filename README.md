@@ -94,12 +94,16 @@ Explores operational performance, treatment costs and data reliability across th
 
 ## 🧩 Data Model
 
-The project uses a **star schema** with the encounter table as the central fact table.
+The project uses a **star-schema approach** with `Fact_Encounter` as the central fact table and supporting dimension tables for patients, hospitals, departments, diagnoses, treatments and dates.
+
+![OptiCare Data Model](documentation/data-model.png)
 
 ### Fact Table
+
 - `Fact_Encounter`
 
 ### Dimension Tables
+
 - `Dim_Patient`
 - `Dim_Hospital`
 - `Dim_Department`
@@ -107,7 +111,7 @@ The project uses a **star schema** with the encounter table as the central fact 
 - `Dim_Treatment`
 - `Dim_Calendar`
 
-The model uses a one-to-many relationship between dimensions and the encounter fact table, supporting consistent filtering and KPI calculations.
+The model uses one-to-many relationships between dimension tables and the encounter fact table, supporting consistent filtering and KPI calculations across the dashboard.
 
 ---
 
@@ -162,6 +166,22 @@ Treatment costs are examined by department and alongside length of stay to ident
 ### Data Quality
 
 Missing values, duplicate records and invalid measurements are explicitly monitored rather than hidden from the reporting process.
+
+## 📊 Key Insights
+
+The dashboard highlights several areas for further investigation across the healthcare network:
+
+- **Readmissions:** The overall 30-day readmission rate is approximately **9.9%**, with observed differences across diagnoses, age groups, admission types and chronic-condition status.
+
+- **Department variation:** Readmission rates and treatment costs vary across departments, helping identify areas where further operational or clinical investigation may be useful.
+
+- **Operational performance:** Waiting times and average length of stay differ across departments and hospitals, highlighting variation in operational performance.
+
+- **Cost and utilisation:** Treatment cost varies across departments and can be examined alongside length of stay to identify unusual patterns and potential outliers.
+
+- **Data quality:** The data preparation process identified **250 duplicate records**, **600 missing diagnosis values**, **480 missing discharge dates** and **100 invalid waiting-time values**.
+
+These findings are intended to support further investigation rather than establish causal relationships.
 
 ## ⚠️ Interpretation & Limitations
 
